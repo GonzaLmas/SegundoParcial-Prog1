@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SegundoParcial
 {
@@ -10,6 +11,10 @@ namespace SegundoParcial
     {
         static void Main(string[] args)
         {
+            AdministradorArchivos archivos = new AdministradorArchivos();
+            archivos.LeerArchivo();
+
+
             Arbol arbol = new Arbol();
 
             Nodo raiz = new Nodo();
@@ -52,9 +57,13 @@ namespace SegundoParcial
 
             Console.WriteLine("\nRecorrido in orden: ");
             arbol.RecorrerInOrden();
-            
+
             Console.WriteLine("\nRecorrido post orden: ");
             arbol.RecorrerPostOrden();
+
+            Console.WriteLine("\nRecorrido amplitud: ");
+            arbol.RecorrerAmplitud();
+
 
             Console.ReadKey();
         }

@@ -57,18 +57,17 @@ namespace SegundoParcial
         {
             RecursivoAmplitud(new List<Nodo>() { Raiz }, 1);
         }
-        private void RecursivoAmplitud(List<Nodo> listaNodos, int nivel)
+        private List<string> RecursivoAmplitud(List<Nodo> listaNodos, int nivel)
         {
+            List<string> recorrido = new List<string>();
 
             if (listaNodos.Count > 0)
             {
                 List<Nodo> siguienteNivel = new List<Nodo>();
 
-                Console.WriteLine("Nivel: " + nivel);
-
                 foreach (var nodo in listaNodos)
                 {
-                    Console.WriteLine(nodo.Letra);
+                    Console.WriteLine(nivel + nodo.Letra);
 
                     if (nodo.Izquierda != null)
                         siguienteNivel.Add(nodo.Izquierda);
@@ -80,6 +79,8 @@ namespace SegundoParcial
                 nivel++;
                 RecursivoAmplitud(siguienteNivel, nivel);
             }
+
+            return recorrido;
         }
 
         public void Insertar(Nodo n)
