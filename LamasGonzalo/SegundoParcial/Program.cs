@@ -11,9 +11,8 @@ namespace SegundoParcial
     {
         static void Main(string[] args)
         {
-            AdministradorArchivos archivos = new AdministradorArchivos();
-            archivos.LeerArchivo();
-
+            AdministradorArchivos arcLectura = new AdministradorArchivos();
+            arcLectura.LeerArchivo();
 
             Arbol arbol = new Arbol();
 
@@ -61,8 +60,9 @@ namespace SegundoParcial
             Console.WriteLine("\nRecorrido post orden: ");
             arbol.RecorrerPostOrden();
 
-            Console.WriteLine("\nRecorrido amplitud: ");
-            arbol.RecorrerAmplitud();
+            Console.WriteLine("\nRecorrido en amplitud del árbol es: ");
+            AdministradorArchivos arcEscritura = new AdministradorArchivos();
+            arcEscritura.EscribirArchivo();
 
 
             Console.ReadKey();

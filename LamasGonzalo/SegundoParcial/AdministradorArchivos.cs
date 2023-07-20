@@ -21,7 +21,7 @@ namespace SegundoParcial
                 {
                     using (StreamReader sr = new StreamReader(archivoArbol))
                     {
-                        Console.WriteLine("La información que hay en el archivo arbol.txt es: " + sr.ReadToEnd() + "\n\n");
+                        Console.WriteLine("La información que hay en arbol.txt es: " + sr.ReadToEnd() + "\n\n");
                     }
                 }
             }
@@ -33,35 +33,61 @@ namespace SegundoParcial
 
         public void EscribirArchivo()
         {
+            Arbol arbol = new Arbol();
+
+            Nodo raiz = new Nodo();
+            raiz.Letra = "A";
+            raiz.Id = 4;
+            arbol.Insertar(raiz);
+
+            Nodo nodoB = new Nodo();
+            nodoB.Letra = "B";
+            nodoB.Id = 2;
+            arbol.Insertar(nodoB);
+
+            Nodo nodoC = new Nodo();
+            nodoC.Letra = "C";
+            nodoC.Id = 1;
+            arbol.Insertar(nodoC);
+
+            Nodo nodoD = new Nodo();
+            nodoD.Letra = "D";
+            nodoD.Id = 3;
+            arbol.Insertar(nodoD);
+
+            Nodo nodoE = new Nodo();
+            nodoE.Letra = "E";
+            nodoE.Id = 6;
+            arbol.Insertar(nodoE);
+
+            Nodo nodoF = new Nodo();
+            nodoF.Letra = "F";
+            nodoF.Id = 5;
+            arbol.Insertar(nodoF);
+
+            Nodo nodoG = new Nodo();
+            nodoG.Letra = "G";
+            nodoG.Id = 7;
+            arbol.Insertar(nodoG);
 
             try
             {
                 string filePath = ConfigurationManager.AppSettings["PathAmplitud"];
 
-                using (FileStream archivo = new FileStream(filePath, FileMode.OpenOrCreate))
+                using (FileStream archivoAmplitud = new FileStream(filePath, FileMode.Append))
                 {
-                    using (StreamWriter escritura = new StreamWriter(archivo))
+                    using (StreamWriter escritura = new StreamWriter(archivoAmplitud))
                     {
-                        List<string> recorridoAmplitud = new List<string>();
+                        string texto = arbol.RecorrerAmplitud();
 
-                        //   recorridoAmplitud = arbol.RecorrerAmplitud();
-
-                        escritura.Write(recorridoAmplitud);
-
-                        Console.WriteLine(recorridoAmplitud);
+                        escritura.WriteLine(texto);
                     }
-
-
                 }
-
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
         }
-
-      
     }
 }
